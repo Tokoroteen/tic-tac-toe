@@ -1,0 +1,46 @@
+<title>tic-tac-toe</title>
+{% extends "base.html" %}
+{% block content %}
+
+<div class="discription">
+    <p><span>{{ n }}</span> ✕ <span>{{ n }}</span> Tic Tac Toe!</p>
+
+    {% if count%2 == 1 %}
+        <p class="first_player">First player</p>
+    {% else %}
+        <p class="second_player">Second player</p>
+    {% endif %}
+
+    <p>Turn: {{ count }}</p>
+</div>
+
+<div class="winner">
+    {% if status == 1 %}
+        <p>First player win!!</p>
+    {% elif status == 2 %}
+        <p>Second player win!!</p>
+    {% endif %}
+</div>
+
+<table>
+    {% for i in range(0,n*n,n) %}
+    <tr>
+        {% for j in range(n) %}
+            {% if board[i+j] == '0' %}
+                <th>
+                    <a href="{{ url_for('update', n=n, status=status, count=count, x=j, y=i, board=board) }}">-</a>
+                </th>
+            {% elif board[i+j] == '1' %}
+                <th class="first">○</th>
+            {% elif board[i+j] == '2' %}
+                <th class="second">✕</th>
+            {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="reset">
+    <a href="{{ url_for('reset', n=n) }}">RESET</a>
+</div>
+{% endblock %}
