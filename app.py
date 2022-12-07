@@ -85,4 +85,4 @@ def update(n,count,status,x,y,board):
     return render_template("tic-tac-toe.html", n=n, count=count, status=status, board=board)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
