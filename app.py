@@ -28,13 +28,13 @@ def winner_checker(n,status,board):
                 row = board[y:y+n] #ヨコのマス
                 #ヨコが揃ったかどうか
                 status = aline_checker(n,row)
-                print('行',row)
+                #print('行',row)
                 if status != 0: #勝敗がついたらbreak
                     break
         else:
             #タテが揃ったかどうか
             status = aline_checker(n,column)
-            print('列',column)
+            #print('列',column)
             if status != 0: #勝敗がついたらbreak
                 break
             continue
@@ -42,8 +42,8 @@ def winner_checker(n,status,board):
     #ナナメが揃ったかどうか
     if status == 0:
         status = max(aline_checker(n,diagonal_1),aline_checker(n,diagonal_2))
-        print('ななめ',diagonal_2)
-    print('status',status)
+        #print('ななめ',diagonal_2)
+    #print('status',status)
     return status
 
 #ホーム画面
@@ -58,7 +58,7 @@ def tic_tac_toe():
     count = 1 #ターン数
     status = 0 #勝者
     board = '0'*n*n #マス目の中身
-    print(board)
+    #print(board)
     return render_template("tic-tac-toe.html", n=n, count=count, status=status, board=board)
 
 @app.route("/tic-tac-toe?n=<int:n>", methods=["GET"])
@@ -67,7 +67,7 @@ def reset(n):
     count = 1 #ターン数
     status = 0 #勝者
     board = '0'*n*n #マス目の中身
-    print(board)
+    #print(board)
     return render_template("tic-tac-toe.html", n=n, count=count, status=status, board=board)
 
 #ゲーム画面の更新
